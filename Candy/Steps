@@ -1,0 +1,25 @@
+Problem statement->
+
+There are n children standing in a line. Each child is assigned a rating value given in the integer array arr[].
+You are giving candies to these children subjected to the following requirements:
+Each child must have at least one candy.
+Children with a higher rating than their neighbors get more candies than their neighbors.
+Return the minimum number of candies you need to have to distribute.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Solution Steps ->
+
+1) Create a function called minCandy(int arr[]) which will return int and take parameter int[] arr.
+2) Craete a temp[] of same length as arr[] has;
+3) Run a 'for' loop and Assign initial values '1' to temp[] array, which will fulfill our condition (Each user must contain excatly one candy).
+4) Run second 'for' loop from index 1 to last -
+    1) Check if current element is greater than previous element,
+        if condition true then increase the value of temp[i](current element in temp[] array)
+        to temp[i-1]+1(this will fullfill condition to get candy more than previous one).
+5) Run third 'for' loop from arr.length -2 to 0 -
+    1) Check if current element is greate than the next element,
+        if condition true then consider max value between (temp[i] and temp[i+1]+1), we are doing this because we have added values in temp[] previously while going left to right.
+6) At last, Run fourth 'for' loop and do sum of all numbers and store it in a res variable.
+7) Return res;
+8) END
+
