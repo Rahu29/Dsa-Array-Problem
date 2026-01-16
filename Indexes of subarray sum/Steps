@@ -1,0 +1,27 @@
+Given an array arr[] containing only non-negative integers,
+your task is to find a continuous subarray (a contiguous sequence of elements)
+whose sum equals a specified value target. You need to return the 1-based indices of the leftmost and rightmost elements of this subarray.
+You need to find the first subarray whose sum is equal to the target.
+
+Note: If no such array is possible then, return [-1].
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Solution ->
+
+1) Create a function called subarrySum() that will take two parameter (int[] arr and target) and return type is List<Integer>.
+2) Create 4 variables i, start, res, list -
+    1) i = To iterate over all element using a loop.
+    2) start = To exclude the elements from left side if the sum of current element + res is greter than the target element.
+    3) res = To add elements in res for checking if res == target.
+    4) list = To return final result i.e indexes.
+3) Run a while loop till i < arr.length -
+    1) Check condition if res + current element is less than or equal to target, if true -
+        1) Add current element in res.
+        2) Check condition if res is equal to target, if true then add start index and current index i.e (start, i) and return list.
+        3) Increment the value of i.
+    2) In the else condition -
+        1) Remove the left most element at index 'start' from res.
+        2) Increment 'start' variable.
+4) If not getting the subarray sum equal to target add -1 in list and return the list.
+5) END
