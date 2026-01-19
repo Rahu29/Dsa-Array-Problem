@@ -1,0 +1,27 @@
+Given a string s, find the length of the longest substring without duplicate characters.
+
+Example 1:
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3. Note that "bca" and "cab" are also correct answers.
+---------------------------------------------------------------------------------------------------------------------
+1) Create a method for calculating lengthOfLongestSubstring which will takes parameter as String and return result int.
+2) Create a SET of Character - for tracking unique characters.
+3) Create 3 variables-
+    1) l = To track from left.
+    2) r = Used to iterate over all elements till s.length().
+    3) max = This is the final result of longest substring without repeating charaters.
+4) Run a 'while' loop till s.length()-1 -
+    1) Check condition if current element is present in set or not using(set.add(current element)), if current element is not present then -
+        1) Add current element in set
+        2) Calculate max using Math.max(max, (r-l)+1) -
+            1) (r - l) + 1 = it is used to get actual length of string from l to r e.g l=2 & r=5 so (5-2)+1 = 4.
+        3) Increase right pointer i.e r++.
+    2) if current element is present then -
+        1) Run a while loop till left pointer value is not equal to right pointer value i.e s.charAt(l) != s.charAt(r) -
+            1) Remove the left pointer element from set.
+            2) Increase left pointer.
+        2) Again remove the left pointer  element from set because above 'while' loop will break if current element is equal to left pointer element but we also want to remove that left pointer element so our string will be unique.
+        3) Increase left pointer.
+5) return 'max' result.
+6) Test.
