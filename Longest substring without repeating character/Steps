@@ -24,4 +24,4 @@ Explanation: The answer is "abc", with the length of 3. Note that "bca" and "cab
         2) Again remove the left pointer  element from set because above 'while' loop will break if current element is equal to left pointer element but we also want to remove that left pointer element so our string will be unique.
         3) Increase left pointer.
 5) return 'max' result.
-6) Test.
+6) Test. 
