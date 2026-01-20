@@ -1,0 +1,23 @@
+Given a string s, return the longest palindromic substring in s.
+
+Example 1:
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+------------------------------------------------------------------------------------------------------------
+Solution -
+1) Create a function isPalindrome() which will takes parameter called string, start index and end index, for checking a string is palindrome or not.
+2) Create another function longestPalindrome which will take String 's' as a parameter.
+3) Create 3 variables -
+    1) max = To track max palindrome string at each ieration.
+    2) start = To keep a track of starting index of string.
+    3) end = Ending index of string.
+4) Now run a for loop from index 0 to length of the string -
+    1) Run inner for loop from j=i to length of the string -
+        1) Check condition if isPalindrome(string, index i, index j), if true -
+            1) Check condition if max is less than the current length of the string i.e (j-i)+1-
+                1) Assign new value to max i.e (j-1)+1.
+                2) Assign new value to start i.e 'i'.
+                3) Assign new value to end i.e 'j'.
+5) At last return a string result from the value of start to end i.e substring(start, end+1).
+6) END
