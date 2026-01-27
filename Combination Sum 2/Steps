@@ -1,0 +1,45 @@
+Leetcode 40
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
+Each number in candidates may only be used once in the combination.
+Note: The solution set must not contain duplicate combinations.
+
+Example 1:
+Input: candidates = [10,1,2,7,6,1,5], target = 8
+Output:
+[[1,1,6],[1,2,5],[1,7],[2,6]]
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Solution ->
+1) Craete a function called combinationSum2() which will take two param int array of candidates and int target.
+2) Sort the array in ascending order, and this is the key step.
+3) Create List<List<Integer>> res for storing final res.
+4) Now call another function called combination() whose return type is void and will take param as below-
+    1) int[] arr - this is the orginal array.
+    2) int start - use to know starting point
+    3) int remainingTarget - Used to know how much target is remaining.
+    4) List<Integer> path - Used to store current element if it is small than the remainingTarget.
+    5) List<List<Integer>> res - Used to store final res if remainingTarget == 0.
+5) Call combination() from combinationSum2() and pass param values as below -
+    1) Actual array
+    2) '0' as a start value
+    3) Actual target
+    4) new ArrayList<>() for path
+    5) List<List<Integer>> for res
+6) Return res from combinationSum2().
+7) In combination() check condition if remainingTarget is equal to zero if so -
+    1) Add copy of current path to res i.e res.add(new ArrayList<>(path)).
+    2) Return.
+8) If remainingTarget is not equal to zero then -
+    1) Run a for loop starting from i=start to arr.length -
+        1) Check condition if remainingTarget is less than current element i.e arr[i] -
+            1) Break loop.
+        2) Check condition if (i != start) and the current element is equal to previous i.e arr[i] == arr[i-1], because of this duplicate elements will not come incase the input comntains duplicate elements like (1,3,2,4,1,5).
+            1) Continue.
+        3) If above(8.1.1) condition breaks then add current variable in path.
+        4) Call same function (combination()) recursively and pass param as below -
+            1) Actual array i.e arr.
+            2) Current index(i) as start.
+            3) remainingTarget - arr[i]
+            4) path
+            5) res
+        5) Remove last element from path i.e path.remove(path.size()-1).
+9) END
