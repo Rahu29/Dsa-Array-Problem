@@ -1,0 +1,27 @@
+525. Contiguous Array
+Given a binary array nums, return the maximum length of a contiguous subarray with an equal number of 0 and 1.
+
+Example 1:
+Input: nums = [0,1]
+Output: 2
+Explanation: [0, 1] is the longest contiguous subarray with an equal number of 0 and 1.
+----------------------------------------------------------------------------------------------------------------------------------------
+1) Create a method called contiguousSubarray() which takes parameter as an int array.
+2) Create three variables -
+    1) hashmap -> to store current sum as key and current index as value.
+    2) currentSum -> to track current sum.
+    3) maxRes -> to track max res.
+3) Then initially put one value in hashmap which is map.put(currentSum, -1),
+    because infuture we will compare at each step if map contains key as current sum or not and if somehow in future currentsum=0
+    then it must present in map thats why I have added this in map. If not understand then debug code with this test case [0, 1].
+4) Run a for loop from 0 to arr.length -
+    1) CHeck condition if current element i.e arr[i] is equal to 0 -
+        1) If current element5 is 0 then add -1 to current sum, Because of this we can find if total number of 1 and total jhnumber of 0 are equal opr not.
+    2) If condition fails then definately current element is 1 -
+        1) In else condition add 1 in currentSum.
+    3) Now check another condition if map.containsKey(currentSum) or not-
+        1) If map contains currentsum as a key then we have got this sum previously also and previously we had stored sum and index in map.
+            so check whi is greater between maxRes and currentIndex-index of previous sum i.e map.get(currentSum)(i-map.get(currentSum) --> this will give actual length of subarray).
+    4) If map does not contains currentSum as a key then in else section add currentSum as key and current index i.e i in map.
+5) Return maxRes.
+6) End
