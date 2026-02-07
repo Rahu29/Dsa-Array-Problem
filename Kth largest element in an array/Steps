@@ -1,0 +1,51 @@
+215. Kth Largest Element in an Array
+
+Given an integer array nums and an integer k, return the kth largest element in the array.
+Note that it is the kth largest element in the sorted order, not the kth distinct element.
+Can you solve it without sorting?
+
+Example 1:
+Input: nums = [3,2,1,5,6,4], k = 2
+Output: 5
+------------------------------------------------------------------------------------------------------------------------
+Solution ->
+1) Create a method findKthLargest() with return type as int with 2 parameter(int[] nums array and kth value).
+2) Create a integer priority queue(pq) for min heap and initialize it.
+3) Run a for loop from 0 to nums.length
+    1) Check condition if pq.size() < k -
+        1) Add current element in priority queue.
+    2) Else -
+        1) Check condition if current element is greate than pq.peek()-
+            1) If this condition is true then remove that element from pq using pq.poll.
+            2) Add current element in priority queue using pq.add().
+4) At last return pq.peek() which is kth largest element in an array.
+------------------------------------------------------------------------------------------------------------------------
+Debugging steps->
+
+1) Iteration i = 0
+    1) pq.size() < k → add 3
+    2) pq = [3]
+2) Iteration i = 1
+    1) pq.size() < k → add 2
+    2) pq = [2, 3]
+3) Iteration i = 2
+    1) pq.size() == k
+    2) Compare nums[i]=1 with pq.peek()=2
+    3) 1 > 2 → false → do nothing
+    4) pq = [2, 3]
+4) Iteration i = 3
+    1) Compare nums[i]=5 with pq.peek()=2
+    2) 5 > 2 → true
+    3) poll 2, add 5
+    4) pq = [3, 5]
+5) Iteration i = 4
+    1) Compare nums[i]=6 with pq.peek()=3
+    2) 6 > 3 → true
+    3) poll 3, add 6
+    4)pq = [5, 6]
+6) Iteration i = 5
+    1) Compare nums[i]=4 with pq.peek()=5
+    2) 4 > 5 → false → do nothing
+    3) pq = [5, 6]
+7) Return pq.peek() = 5
+8) END
