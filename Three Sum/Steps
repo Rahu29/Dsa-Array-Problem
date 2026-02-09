@@ -1,0 +1,43 @@
+15. 3Sum
+
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+Notice that the solution set must not contain duplicate triplets.
+
+Example 1:
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation:
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Solution ->
+1) Create a method threeSUm() with return type List of LIst of Integer and parameter as int[] nums.
+2) Sort the array in increasing order.
+3) Create List of List of Integer res to store res that we need to return last.
+4) Run a for loop from 0 to nums.length-2(Skipping last two elements because we are using two pointer technique so any how that will be considered) -
+    1) Check condition if i is greater than 0 and current element is equal to previous element -\
+        1) If correct then simply continue; to skip duplicate result.
+    2) Create left variable and assign value to it i.e. i+1.
+    3) Create right variable and assign value to it i.e. nums.length-1.
+    4) Run a while loop till left < right -
+        1) Create a variablke called sum ans assign value to it. i.e. nums[i]+nums[left]+nums[right].
+        2) CHeck condition if sum is equal to zero -
+            1) If true then create a temp list and add these three elemet to it i.e. nums[i], nums[left] and nums[right].
+            2) Add temp list in res.
+            3) Increament left pointer by 1.
+            4) Decrement right pointer by 1.
+            5) Run a while loop - left < right and nums[left] == nums[left-1] to skip duplicate result-
+                1) If true then incremenet left by 1.
+            6) Run a while loop - left < right and nums[right] == nums[right+1] to skip dupliacte result-
+                1) If true then decrease right by 1.
+        3) Check condition in else if block that is sum<0 -
+            1) If true then increment left by 1.
+        4) Else-
+            1) decrease right by 1.
+5) Retrun res.
+6) END.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
