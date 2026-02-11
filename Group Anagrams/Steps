@@ -1,0 +1,29 @@
+49. Group Anagrams
+
+Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+Example 1:
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+Explanation:
+There is no string in strs that can be rearranged to form "bat".
+The strings "nat" and "tan" are anagrams as they can be rearranged to form each other.
+The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.
+--------------------------------------------------------------------------------------------------------------------------------------
+Solution -
+1) Create a method with return type as List<List<String>> and parameter as String[] strs.
+2) Create a hashmap to store string in sorted order as a key and all anagrams of that key in list of string as a value.
+3) Run a for loop from 0 to strs.length-
+    1) Now get a current string convert it into char[] array.
+    2) Sort this char[] array using Arrays.sort().
+    3) Convert this sorted array into String str using new String[sorted chr[] array].
+    4) Create a list of string to store all anagram strings.
+    5) Check condition if str is present in map as key or not -
+        1) If above condition is true then get existing record from map and store it's value in list which we have created above
+        2) Add current element in this list.
+    6) Else the current string is not present in map as key in asc order, so add current elemet in list.
+    7) Add sorted string as key in map and list as value.
+4) Return new ArrayList<>(map.values()).
+5) END
+-----------------------------------------------------------------------------------------------------------------------------------------
