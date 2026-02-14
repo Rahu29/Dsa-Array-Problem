@@ -30,3 +30,6 @@ public int longestValidParentheses(String s) {
     }
     return res;
 }
+
+// Time Complexity = O(N)
+// Space Complexity = O(N)
