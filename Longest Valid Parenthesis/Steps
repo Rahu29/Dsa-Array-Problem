@@ -1,0 +1,25 @@
+32. Longest Valid Parentheses
+Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses substring.
+
+Example 1:
+Input: s = "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()".
+-----------------------------------------------------------------------------------------------
+Solution ->
+1) Create a method with return type as int and parameter as STring s.
+2) Create a stack of Integer and initialize it.
+3) Create a int res variable to store actual longest length.
+4) Push initial element in stack as -1.
+5) Run a for loop from 0 to s.length-1-
+    1) Check condition if current char is equal to '('-
+        1) If tru then insert current index in stack
+    2) Else-
+        1) pop the lsat inserted element from stack.
+        2) Check condition if stack is empty or not -
+            1) If it is empty then add current index in stack
+        3) Else -
+            1) calculate current length i.e current index - stack.peek()
+            2) Assign greter value between res and length to res.
+6) Return res.
+7) END
